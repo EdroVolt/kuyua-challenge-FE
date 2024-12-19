@@ -5,42 +5,16 @@ import axios from "axios";
 import Link from "next/link";
 import { Chart } from "primereact/chart";
 import GlobeMap, { Location } from "@/components/GlobeMap";
+import { donutChartOptions, barChartOptions } from "./chartOptions";
+import { getChartData } from "./chartData";
 import "./page.css";
 import { LocationsApiResponse } from "./locations/page";
 
-export default function Home() {
+const Home = () => {
   const [locations, setLocations] = useState<Location[]>([]);
   const [totalLocations, setTotalLocations] = useState(0);
   const [riskData, setRiskData] = useState({ high: 0, medium: 0, low: 0 });
   const [error, setError] = useState<string | null>(null);
-
-  const chartData = {
-    labels: ["High Risk", "Medium Risk", "Low Risk"],
-    datasets: [
-      {
-        data: [riskData.high, riskData.medium, riskData.low],
-        backgroundColor: ["#ef4444", "#f97316", "#22c55e"],
-        borderWidth: 0,
-      },
-    ],
-  };
-
-  const chartOptions = {
-    cutout: "60%",
-    plugins: {
-      legend: {
-        position: "right" as const,
-        labels: {
-          color: "#ffffff",
-          font: {
-            size: 11,
-          },
-          boxWidth: 15,
-        },
-      },
-    },
-    maintainAspectRatio: true,
-  };
 
   useEffect(() => {
     const fetchLocations = async () => {
@@ -82,9 +56,10 @@ export default function Home() {
     fetchLocations();
   }, []);
 
+  const chartData = getChartData(riskData);
+
   return (
     <div className="dashboard">
-      {/* First Row - 3 columns */}
       <div className="dashboard-top">
         <Link href="/locations" className="stats-card">
           <div className="stats-content">
@@ -104,26 +79,23 @@ export default function Home() {
 
         <div className="chart-card">
           <div className="chart-container">
-            <Chart type="doughnut" data={chartData} options={chartOptions} />
+            <Chart
+              type="doughnut"
+              data={chartData}
+              options={donutChartOptions}
+            />
           </div>
         </div>
 
         <div className="action-card">
           <div className="action-buttons">
-            <button className="action-button">
-              <span>REPORT</span>
-            </button>
-            <button className="action-button">
-              <span>TARGETS</span>
-            </button>
-            <button className="action-button">
-              <span>ACTIONS</span>
-            </button>
+            <button className="action-button">REPORT</button>
+            <button className="action-button">TARGETS</button>
+            <button className="action-button">ACTIONS</button>
           </div>
         </div>
       </div>
 
-      {/* Second Row - 2 columns */}
       <div className="dashboard-bottom">
         <div className="map-card">
           <div className="card-header">
@@ -163,49 +135,13 @@ export default function Home() {
                   },
                 ],
               }}
-              options={{
-                indexAxis: "y",
-                stacked: true,
-                maintainAspectRatio: false,
-                plugins: {
-                  legend: {
-                    position: "bottom" as const,
-                    labels: {
-                      color: "#ffffff",
-                      font: {
-                        size: 11,
-                      },
-                      boxWidth: 15,
-                    },
-                  },
-                },
-                scales: {
-                  x: {
-                    stacked: true,
-                    grid: { color: "#333" },
-                    ticks: {
-                      color: "#ffffff",
-                      font: {
-                        size: 10,
-                      },
-                    },
-                  },
-                  y: {
-                    stacked: true,
-                    grid: { color: "#333" },
-                    ticks: {
-                      color: "#ffffff",
-                      font: {
-                        size: 10,
-                      },
-                    },
-                  },
-                },
-              }}
+              options={barChartOptions}
             />
           </div>
         </div>
       </div>
     </div>
   );
-}
+};
+
+export default Home;
