@@ -32,12 +32,17 @@
   padding: 2rem;
   border: 1px solid #333;
   color: #ffffff;
-  grid-column: span 5;
+  grid-area: 1 / 1 / 2 / 5;
 }
 
 .score-card {
   height: 100%;
-  /* grid-column: span 1; */
+  grid-area: 1 / 5 / 2 / 8;
+}
+
+.score-card h3 {
+  font-size: 2rem;
+  margin-top: 0;
 }
 
 .stats-card {
@@ -56,7 +61,14 @@
 }
 
 .stats-left {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
   color: #ffffff;
+  width: 45%;
+  background-color: rgb(44, 44, 44);
+  padding: 18px;
+  border-radius: 12px;
 }
 
 .stats-left h3 {
@@ -69,7 +81,6 @@
 .stats-number {
   font-size: 4rem;
   font-weight: bold;
-  margin-top: 0.5rem;
 }
 
 .stats-right {
@@ -126,7 +137,6 @@
 }
 
 .chart-card {
-  background: #1a1a1a;
   border-radius: 8px;
   padding: 2rem;
   border: 1px solid #333;
@@ -156,7 +166,7 @@
 
 .stats-card, .map-card, .chart-card, .score-card {
   background: #1a1a1a;
-  border-radius: 12px;
+  border-radius: 20px;
   padding: 2rem;
   border: 1px solid #333;
   color: #ffffff;
@@ -175,7 +185,7 @@
 
 .card-header h3 {
   margin: 0;
-  font-size: 1.2rem;
+  font-size: 3rem;
   font-weight: 500;
 }
 

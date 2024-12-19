@@ -83,6 +83,7 @@ const Home = () => {
               type="doughnut"
               data={chartData}
               options={donutChartOptions}
+              style={{ height: "140px", marginTop: "12px" }}
             />
           </div>
         </div>
@@ -111,7 +112,7 @@ const Home = () => {
         </div>
 
         <div className="score-card">
-          <h3>Risk Scores</h3>
+          <h3>PROFILES</h3>
           <div className="score-chart">
             <Chart
               type="bar"
