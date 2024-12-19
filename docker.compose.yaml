@@ -1,0 +1,48 @@
+services:
+  backend:
+    image: edrovolt/kuyua-challenge-backend
+    restart: always
+    container_name: kuyua-challenge-backend
+    ports:
+      - "8080:8080"
+    environment:
+      - NODE_ENV=production
+      - PORT=8080
+      - DATABASE_URL=mongodb://mongo:27017/locationsDB
+    depends_on:
+      - mongo
+    networks:
+      - my-network
+
+  mongo:
+    image: mongo:latest
+    restart: always
+    container_name: mongo-db
+    ports:
+      - "27017:27017"
+    volumes:
+      - mongo-data:/data/db
+    networks:
+      - my-network
+
+  app:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    container_name: kuyua-challenge-frontend
+    ports:
+      - "3000:3000"
+    environment:
+      - NODE_ENV=production
+      - API_URL=http://backend:8080
+    depends_on:
+      - backend
+    networks:
+      - my-network
+
+networks:
+  my-network:
+    driver: bridge
+
+volumes:
+  mongo-data:

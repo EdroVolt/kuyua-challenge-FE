@@ -43,6 +43,7 @@ export default function LocationsList() {
     loadLocations(lazyState.page);
   }, [lazyState]);
 
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
   const onPage = (event: any) => {
     setLazyState(event);
   };
