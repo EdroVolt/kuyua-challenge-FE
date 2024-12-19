@@ -1,0 +1,224 @@
+.dashboard {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+/* First Row - 3 columns */
+.dashboard-top {
+  display: grid;
+  grid-template-columns: repeat(7, 1fr);
+  gap: 0.5rem;
+}
+
+/* Second Row - 2 columns */
+.dashboard-bottom {
+  display: grid;
+  grid-template-columns: repeat(7, 1fr);
+  gap: 0.5rem;
+}
+
+/* Update other styles */
+.stats-card, .chart-card, .action-card {
+  min-height: 180px;
+}
+
+.map-card {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  gap: 1rem;
+  background: #1a1a1a;
+  border-radius: 8px;
+  padding: 2rem;
+  border: 1px solid #333;
+  color: #ffffff;
+  grid-column: span 5;
+}
+
+.score-card {
+  height: 100%;
+  /* grid-column: span 1; */
+}
+
+.stats-card {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  text-decoration: none;
+  padding: 20px !important;
+  grid-column: span 5;
+}
+
+.stats-content {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.stats-left {
+  color: #ffffff;
+}
+
+.stats-left h3 {
+  margin: 0;
+  font-size: 1rem;
+  font-weight: 500;
+  color: #888;
+}
+
+.stats-number {
+  font-size: 4rem;
+  font-weight: bold;
+  margin-top: 0.5rem;
+}
+
+.stats-right {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  color: #ffffff;
+}
+
+.right-content {
+  text-align: right;
+}
+
+.right-content h4 {
+  margin: 0;
+  font-size: 1rem;
+  font-weight: 500;
+}
+
+.right-content p {
+  margin: 0.3rem 0 0 0;
+  font-size: 0.8rem;
+  color: #888;
+}
+
+.view-all {
+  font-size: 0.9rem;
+}
+
+.arrow {
+  font-size: 1.2rem;
+  transition: transform 0.2s;
+}
+
+.stats-card:hover .arrow {
+  transform: translateX(4px);
+}
+
+.map-container {
+  grid-column: span 2;
+  width: 100%;
+  position: relative;
+  height: 100%;
+}
+
+#map-container {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  width: 100%;
+  height: 100%;
+}
+
+.chart-card {
+  background: #1a1a1a;
+  border-radius: 8px;
+  padding: 2rem;
+  border: 1px solid #333;
+  color: #ffffff;
+  padding-bottom: 3rem;
+}
+
+.chart-container {
+  height: 80px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-top: 1rem;
+}
+
+.dashboard-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 0.5rem;
+}
+
+.left-column, .right-column {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.stats-card, .map-card, .chart-card, .score-card {
+  background: #1a1a1a;
+  border-radius: 12px;
+  padding: 2rem;
+  border: 1px solid #333;
+  color: #ffffff;
+  min-height: 180px;
+}
+
+.map-container {
+  flex-grow: 1;
+  min-height: 400px;
+  padding-bottom: 3rem;
+}
+
+.card-header {
+  grid-column: span 1;
+}
+
+.card-header h3 {
+  margin: 0;
+  font-size: 1.2rem;
+  font-weight: 500;
+}
+
+.card-header p {
+  margin: 0.5rem 0 0 0;
+  font-size: 0.9rem;
+  color: #888;
+}
+
+.top-row {
+  display: grid;
+  grid-template-columns: 2fr 1fr;
+  gap: 0.5rem;
+}
+
+.action-buttons {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  justify-content: center;
+  height: 100%;
+}
+
+.action-button {
+  background: #1a1a1a;
+  border: 1px solid #333;
+  border-radius: 50px;
+  padding: 1.2rem;
+  color: #ffffff;
+  font-size: 1rem;
+  cursor: pointer;
+  transition: all 0.2s;
+  width: 100%;
+}
+
+.action-button:hover {
+  background: #333;
+  transform: translateX(5px);
+}
+
+.score-chart {
+  height: 140px;
+  margin-top: 1.5rem;
+}
+
+/* Keep existing styles and update as needed */ 
